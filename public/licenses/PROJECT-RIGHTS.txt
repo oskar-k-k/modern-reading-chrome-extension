@@ -1,0 +1,7 @@
+Copyright (c) 2026 Oskar Konczarek. All rights reserved.
+
+Except for rights required by applicable law or granted under the terms of the hosting platform, no license is granted to use, copy, modify, distribute, sublicense or sell the original source code, documentation or artwork in this repository.
+
+Making this repository publicly accessible does not grant an open-source license. Contact the copyright holder through the GitHub profile https://github.com/oskar-k-k to request permission.
+
+Third-party materials remain subject to their own terms and are excluded from this notice. See THIRD_PARTY_NOTICES.md and public/licenses/.

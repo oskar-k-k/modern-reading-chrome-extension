@@ -2,12 +2,25 @@
 
 A local-first Chrome Manifest V3 extension for adjustable word-prefix highlighting, inspired by Bionic Reading. This is an independent implementation, not the official Bionic Reading product or algorithm. It makes no promise of increased reading speed or comprehension.
 
+## Features
+
+- Adjustable word highlighting with a one-click pause and per-site exceptions.
+- Local processing, no account, no analytics and no text uploads.
+- English, German, Spanish, French, Portuguese, Simplified Chinese and Japanese.
+- Browser-language detection with an English fallback and a saved manual choice.
+
+## Rights and source availability
+
+**Source-visible, not open source.** Copyright 2026 Oskar Konczarek. All rights reserved. Public visibility does not grant permission to reuse, modify or redistribute the original project materials beyond applicable law or hosting-platform terms. See [LICENSE](LICENSE). Third-party assets have separate terms in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+The instructions below document the build for the maintainer and others who have obtained permission; they do not grant additional rights.
+
 ## Install the development version
 
 From this project directory:
 
 ```powershell
-npm.cmd install
+npm.cmd ci
 npm.cmd run build
 ```
 
@@ -90,3 +103,11 @@ The project was extracted from Oskar Lab. Earlier history remains in that reposi
 The normal popup links to the creator's Ko-fi and Patreon pages. Both links open in a new tab only when clicked; no third-party widgets or network requests are used to render them. Logos are bundled locally from [Simple Icons](https://github.com/simple-icons/simple-icons), distributed under CC0; the respective brand trademarks remain with their owners.
 
 The support area uses larger colored icons and compact buttons. All supported locales keep the collapsed popup below 360 pixels high. Saved language choices override the initial browser-language choice.
+
+## Support the project
+
+If you enjoy Modern Reading, you can support my work on [Ko-fi](https://ko-fi.com/oskar_k_k) or [Patreon](https://www.patreon.com/cw/oskar_k_k). Support is optional and does not unlock extension features.
+
+## Feedback
+
+Report bugs through [GitHub Issues](https://github.com/oskar-k-k/modern-reading-chrome-extension/issues). Include the browser version and reproduction steps, but do not post private page contents or personal data. Please discuss proposed contributions first; no contribution licensing arrangement is currently established.

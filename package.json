@@ -25,5 +25,10 @@
     "eslint": "^9",
     "globals": "^16",
     "vitest": "^4.1.11"
+  },
+  "license": "UNLICENSED",
+  "repository": {
+    "url": "https://github.com/oskar-k-k/modern-reading-chrome-extension.git",
+    "type": "git"
   }
 }
