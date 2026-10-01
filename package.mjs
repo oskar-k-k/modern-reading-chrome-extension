@@ -1,0 +1,10 @@
+import {mkdir, readFile} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
+import {resolve} from 'node:path';
+const {version} = JSON.parse(await readFile('dist/manifest.json', 'utf8'));
+if (!/^\d+(\.\d+){0,3}$/.test(version)) throw new Error('Invalid extension version');
+await mkdir('release', {recursive:true});
+const output = resolve(`release/modern-reading-${version}.zip`);
+if (process.platform !== 'win32') throw new Error('Packaging currently requires PowerShell on Windows; zip the contents of dist on other systems.');
+execFileSync('powershell.exe', ['-NoProfile', '-NonInteractive', '-Command', 'Compress-Archive -Path (Join-Path $env:MODERN_READING_DIST "*") -DestinationPath $env:MODERN_READING_ZIP -Force'], {env:{...process.env, MODERN_READING_DIST:resolve('dist'), MODERN_READING_ZIP:output}, stdio:'inherit'});
+console.log(output);
