@@ -111,3 +111,7 @@ If you enjoy Modern Reading, you can support my work on [Ko-fi](https://ko-fi.co
 ## Feedback
 
 Report bugs through [GitHub Issues](https://github.com/oskar-k-k/modern-reading-chrome-extension/issues). Include the browser version and reproduction steps, but do not post private page contents or personal data. Please discuss proposed contributions first; no contribution licensing arrangement is currently established.
+
+## Privacy policy
+
+Read the dedicated [Modern Reading privacy policy](https://oskarlab.dev/modern-reading/privacy) for local processing, saved preferences, website exclusions and external links. This website is not required for the extension to run.
