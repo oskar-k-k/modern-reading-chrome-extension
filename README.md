@@ -84,3 +84,7 @@ Privacy, the purpose of website access, compatibility limits, reading expectatio
 Run `npm.cmd run package` to create `release/modern-reading-0.2.2.zip` on Windows. The archive contains the contents of dist with manifest.json at its root. Upload this ZIP in the Chrome Web Store developer dashboard; do not upload source, node_modules or the repository. Store listing, privacy disclosures and review remain separate publication steps. On other systems, ZIP the contents of dist.
 
 The project was extracted from Oskar Lab. Earlier history remains in that repository; this repository starts with the extracted standalone source.
+
+## Support links
+
+The normal popup links to the creator's Ko-fi and Patreon pages. Both links open in a new tab only when clicked; no third-party widgets or network requests are used to render them. Logos are bundled locally from [Simple Icons](https://github.com/simple-icons/simple-icons), distributed under CC0; the respective brand trademarks remain with their owners.

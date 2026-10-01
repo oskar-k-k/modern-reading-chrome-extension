@@ -1,6 +1,7 @@
 /** Shared English and German copy for the Modern Reading extension. */
 export const modernReadingMessages = {
     en: {
+        support: 'Enjoying it? Support my work',
         description: 'Highlight word beginnings in longer web text. Local, adjustable and reversible.',
         eyebrow: 'A LITTLE MORE FOCUS', title: 'Modern Reading',
         intro: 'Word focus. On every website.',
@@ -23,6 +24,7 @@ export const modernReadingMessages = {
         advanced: 'Advanced', sitePaused: 'Paused on this website.', language: 'Language', reset: 'Reset reading settings',
     },
     de: {
+        support: 'Gefällt dir? Unterstütze meine Arbeit',
         description: 'Wortanfänge in längeren Webtexten hervorheben. Lokal, einstellbar und umkehrbar.',
         eyebrow: 'EIN BISSCHEN MEHR FOKUS', title: 'Modern Reading',
         intro: 'Wortfokus. Auf jeder Website.',

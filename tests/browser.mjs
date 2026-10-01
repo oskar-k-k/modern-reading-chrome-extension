@@ -48,6 +48,12 @@ try {
     await expect(popup.locator('#automatic')).toBeChecked();
     await expect(popup.locator('#advanced')).not.toHaveAttribute('open');
     await expect(popup.locator('footer')).not.toBeVisible();
+    await expect(popup.locator('.support')).toBeVisible();
+    await expect(popup.getByRole('link', {name: 'Ko-fi', exact: true})).toHaveAttribute('href', 'https://ko-fi.com/oskar_k_k');
+    await expect(popup.getByRole('link', {name: 'Patreon', exact: true})).toHaveAttribute('href', 'https://www.patreon.com/cw/oskar_k_k');
+    for (const logo of await popup.locator('.support img').all()) {
+        expect(await logo.evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true);
+    }
     await popup.setViewportSize({width: 380, height: 580});
     expect(await popup.evaluate(() => document.body.getBoundingClientRect().height)).toBeLessThan(320);
     // Guard against Chrome's initial narrow viewport collapsing the intrinsic popup width.
