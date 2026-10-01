@@ -1,3 +1,4 @@
+import {resolveLocale} from './locale';
 import {modernReadingMessages} from './modern-reading.mjs';
 import {defaults, parseSettings, readingSegments, type Settings} from './model';
 
@@ -22,7 +23,7 @@ function notify(key: typeof statusKey) {
 
 function render() {
     const copy = modernReadingMessages[settings.locale];
-    document.documentElement.lang = settings.locale;
+    document.documentElement.lang = settings.locale.replace('_', '-');
     element('version').textContent = chrome.runtime.getManifest().version;
     document.querySelectorAll<HTMLElement>('[data-copy]').forEach(node => {
         node.textContent = copy[node.dataset.copy as keyof typeof copy];
@@ -100,7 +101,7 @@ fraction.addEventListener('input', () => {
 });
 fraction.addEventListener('change', () => { void run(() => save(settings)); });
 minimum.addEventListener('change', () => { void run(() => save({...settings, minimum: Number(minimum.value)})); });
-locale.addEventListener('change', () => { void run(() => save({...settings, locale: locale.value === 'de' ? 'de' : 'en'})); });
+locale.addEventListener('change', () => { void run(() => save({...settings, locale: resolveLocale(locale.value)})); });
 element('reset').addEventListener('click', () => { void run(async () => {
     await save({...defaults, locale: settings.locale});
     await chrome.runtime.sendMessage({type: 'modern-reading:reconcile'});
@@ -109,7 +110,7 @@ element('reset').addEventListener('click', () => { void run(async () => {
 
 async function initialize() {
     const data = await chrome.storage.local.get('settings');
-    settings = parseSettings(data.settings ?? {...defaults, locale: chrome.i18n.getUILanguage().startsWith('de') ? 'de' : 'en'});
+    settings = parseSettings(data.settings ?? {...defaults, locale: resolveLocale(chrome.i18n.getUILanguage())});
     render();
     const [tab] = await chrome.tabs.query({active: true, currentWindow: true});
     if (!tab?.id || !tab.url || !/^https?:\/\//.test(tab.url)) { notify('unsupported'); return; }

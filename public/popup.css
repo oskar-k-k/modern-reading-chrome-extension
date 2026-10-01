@@ -51,9 +51,9 @@ body.keyboard-navigation :focus-visible { outline: 2px solid var(--accent); outl
     input[role=switch]::before { display: none; }
 }
 
-.support { margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; text-align: center; }
-.support p { margin: 0 0 4px; }
-.support-links { display: flex; justify-content: center; gap: 16px; }
-.support-links a { display: inline-flex; align-items: center; gap: 6px; min-height: 26px; padding: 2px 4px; color: var(--ink); text-decoration: none; border-radius: 4px; }
-.support-links a:hover { text-decoration: underline; }
-.support-links img { object-fit: contain; }
+.support { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--ink); font-size: 13px; text-align: center; }
+.support p { margin: 0 0 10px; font-weight: 600; line-height: 1.4; }
+.support-links { display: flex; justify-content: center; gap: 10px; }
+.support-links a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 38px; min-width: 124px; padding: 7px 14px; background: var(--card); border: 1px solid var(--line); color: var(--ink); text-decoration: none; border-radius: 9px; font-weight: 600; }
+.support-links a:hover { background: #fff0ea; border-color: #edb7a6; }
+.support-links img { width: 22px; height: 22px; object-fit: contain; }

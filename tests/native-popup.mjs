@@ -51,7 +51,7 @@ export async function checkNativePopup(context, page, worker) {
         });
         expect(metrics.result.value.width).toBe(380);
         expect(metrics.result.value.scrollWidth).toBe(380);
-        expect(metrics.result.value.height).toBeLessThan(340);
+        expect(metrics.result.value.height).toBeLessThan(360);
         const screenshot = await send('Page.captureScreenshot');
         await mkdir('test-results', {recursive: true});
         await writeFile('test-results/native-popup.png', Buffer.from(screenshot.data, 'base64'));

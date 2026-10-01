@@ -29,7 +29,7 @@ The build already produces the complete installable directory. No server, accoun
 - **Advanced** starts collapsed. It contains the current-site exception, prefix strength (20–70%), a short live preview, minimum paragraph length and language.
 - **Pause on this website** stores the exact origin (scheme, hostname and port), not all its subdomains.
 - **Reset reading settings** turns reading on, clears exclusions, restores 50% strength and a 120-character minimum, and preserves the selected language.
-- Language initially follows Chrome's English/German locale, with English as fallback. Preferences are stored locally, not synced to a remote service.
+- Language initially follows Chrome's UI language (English, German, Spanish, French, Portuguese, Simplified Chinese or Japanese), with English as fallback. Preferences are stored locally, not synced to a remote service.
 - Chrome's site-access controls remain authoritative. Restricting access to selected sites limits where the reader can run without changing the global preference. Restore access through Chrome's extension controls if needed.
 
 ## How it works
@@ -60,7 +60,7 @@ npx.cmd playwright install chromium
 npm.cmd run test:browser
 ```
 
-The browser check loads the unchanged production build in an isolated persistent Chromium profile. It checks automatic first use before any popup interaction, persistent global pause, origin exclusions, keyboard operation, collapsed height, intrinsic width, both languages, reset and dynamic text. The test opens the popup as a tab and overrides only its active-tab query to point to the local fixture. Storage, injection, registration and messaging use real extension APIs. Screenshots are written to ignored `test-results/`.
+The browser check loads the unchanged production build in an isolated persistent Chromium profile. It checks automatic first use before any popup interaction, persistent global pause, origin exclusions, keyboard operation, collapsed height, intrinsic width, all supported languages, reset and dynamic text. The test opens the popup as a tab and overrides only its active-tab query to point to the local fixture. Storage, injection, registration and messaging use real extension APIs. Screenshots are written to ignored `test-results/`.
 
 `MODERN_READING_BROWSER=msedge` can use an installed Edge version that still supports sideloading flags; otherwise use Playwright Chromium. The browser suite additionally opens the real toolbar popup and verifies its 380-pixel width and compact height through the DevTools protocol. The native Chrome Web Store installation/permission dialog still requires a manual store-install check.
 
@@ -88,3 +88,5 @@ The project was extracted from Oskar Lab. Earlier history remains in that reposi
 ## Support links
 
 The normal popup links to the creator's Ko-fi and Patreon pages. Both links open in a new tab only when clicked; no third-party widgets or network requests are used to render them. Logos are bundled locally from [Simple Icons](https://github.com/simple-icons/simple-icons), distributed under CC0; the respective brand trademarks remain with their owners.
+
+The support area uses larger colored icons and compact buttons. All supported locales keep the collapsed popup below 360 pixels high. Saved language choices override the initial browser-language choice.

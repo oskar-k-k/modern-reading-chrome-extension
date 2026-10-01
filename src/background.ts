@@ -1,3 +1,4 @@
+import {resolveLocale} from './locale';
 import {parseSettings} from './model';
 
 const origins = ['http://*/*', 'https://*/*'];
@@ -27,7 +28,7 @@ chrome.runtime.onInstalled.addListener(() => {
     const initialize = queue.then(async () => {
         const stored = await chrome.storage.local.get('settings');
         if (stored.settings === undefined) {
-            await chrome.storage.local.set({settings: parseSettings({locale: chrome.i18n.getUILanguage().startsWith('de') ? 'de' : 'en'})});
+            await chrome.storage.local.set({settings: parseSettings({locale: resolveLocale(chrome.i18n.getUILanguage())})});
         }
     });
     queue = initialize.catch(error => console.error('Modern Reading initialization failed:', error));

@@ -21,7 +21,7 @@ describe('reading model', () => {
         expect(readingSegments('123', 0.5).every(part => !part.highlighted)).toBe(true);
     });
     it('validates storage values and rejects non-HTTP origins', () => {
-        expect(parseSettings({automatic: 'true', fraction: NaN, minimum: -3, excludedOrigins: ['https://example.com', 'javascript:alert(1)', 'https://example.com/path'], locale: 'fr'}))
+        expect(parseSettings({automatic: 'true', fraction: NaN, minimum: -3, excludedOrigins: ['https://example.com', 'javascript:alert(1)', 'https://example.com/path'], locale: 'unsupported'}))
             .toEqual({...defaults, minimum: 40, excludedOrigins: ['https://example.com']});
         expect(parseSettings(null)).toEqual(defaults);
     });

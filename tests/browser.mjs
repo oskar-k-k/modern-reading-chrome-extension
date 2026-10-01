@@ -55,7 +55,7 @@ try {
         expect(await logo.evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true);
     }
     await popup.setViewportSize({width: 380, height: 580});
-    expect(await popup.evaluate(() => document.body.getBoundingClientRect().height)).toBeLessThan(320);
+    expect(await popup.evaluate(() => document.body.getBoundingClientRect().height)).toBeLessThan(360);
     // Guard against Chrome's initial narrow viewport collapsing the intrinsic popup width.
     await popup.setViewportSize({width: 180, height: 580});
     expect(await popup.evaluate(() => document.documentElement.getBoundingClientRect().width)).toBe(380);
@@ -115,6 +115,16 @@ try {
     await popup.locator('#locale').selectOption('en');
     await popup.locator('summary').click();
     await popup.screenshot({path: 'test-results/popup-en.png'});
+    for (const language of ['es', 'fr', 'pt', 'zh_CN', 'ja', 'en']) {
+        await popup.locator('summary').click();
+        await popup.locator('#locale').selectOption(language);
+        await expect(popup.locator('html')).toHaveAttribute('lang', language.replace('_', '-'));
+        await popup.locator('summary').click();
+        await expect(popup.locator('.support')).toBeVisible();
+        expect(await popup.evaluate(() => document.documentElement.scrollWidth)).toBe(380);
+        expect(await popup.evaluate(() => document.body.getBoundingClientRect().height)).toBeLessThan(360);
+        await popup.screenshot({path: `test-results/popup-${language}.png`});
+    }
     await popup.close();
     await page.reload();
     await expect(page.locator('#article [data-modern-reading]').first()).toBeAttached();

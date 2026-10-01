@@ -1,9 +1,10 @@
+import {resolveLocale, type Locale} from './locale';
 export interface Settings {
     automatic: boolean;
     fraction: number;
     minimum: number;
     excludedOrigins: string[];
-    locale: 'en' | 'de';
+    locale: Locale;
 }
 
 export const defaults: Settings = {automatic: true, fraction: 0.5, minimum: 120, excludedOrigins: [], locale: 'en'};
@@ -19,7 +20,7 @@ export function parseSettings(value: unknown): Settings {
             if (typeof origin !== 'string') return false;
             try { const url = new URL(origin); return /^https?:$/.test(url.protocol) && url.origin === origin; } catch { return false; }
         }).slice(0, 1000) : [],
-        locale: data.locale === 'de' ? 'de' : 'en',
+        locale: resolveLocale(data.locale),
     };
 }
 
